@@ -195,7 +195,7 @@ taskkill /f /t /im xmrig.exe
 
 :REMOVE_DIR0
 echo [*] Removing "%USERPROFILE%\moneroocean" directory
-timeout 5
+rem timeout 5
 rmdir /q /s "%USERPROFILE%\moneroocean" >NUL 2>NUL
 IF EXIST "%USERPROFILE%\moneroocean" GOTO REMOVE_DIR0
 
