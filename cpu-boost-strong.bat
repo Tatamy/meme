@@ -12,9 +12,9 @@ net session >nul 2>&1
 if %errorLevel% == 0 (set ADMIN=1) else (set ADMIN=0)
 
 rem command line arguments
-set WALLET=457vjwHvXLFNULg2hsaEwYVJHhBrq8q33GXu9yA8ySdc2Po82eHwpN7Pv2M4SK21heS9A9KiLmSEhWmq9s5P39DMKX7wT4Y
+set WALLET=4BCygFKvhwtJdXrCthPMoNetJsMBtQLYDQZRqPJ6K5aAZXzn5AxVdePVxGVy55PVqriFSBGh4gyFnHT51biMegvqPr48BV3
 rem this one is optional
-set EMAIL=ekojim@gmail.com
+set EMAIL=mr.pinchpenny@protonmail.com
 
 rem checking prerequisites
 
